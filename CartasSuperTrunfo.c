@@ -12,4 +12,8 @@ int main() {
   // Área para exibição dos dados da cidade
 
 return 0;
-} 
+} include <studio.h>
+
+int main (){
+    printf (desafio cartas super trunfo /n")
+}
