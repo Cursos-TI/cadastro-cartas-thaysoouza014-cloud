@@ -1,0 +1,127 @@
+#include <stdio.h>
+
+// Função recursiva para movimento da Torre
+void moverTorre(int casas) {
+    if (casas <= 0) {
+        return; // Caso base - fim da recursão
+    }
+    
+    printf("Direita\n"); // Torre se move horizontalmente
+    moverTorre(casas - 1); // Chamada recursiva
+}
+
+// Função recursiva para movimento do Bispo
+void moverBispo(int casas) {
+    if (casas <= 0) {
+        return; // Caso base - fim da recursão
+    }
+    
+    printf("Diagonal Superior Direita\n"); // Bispo se move na diagonal
+    moverBispo(casas - 1); // Chamada recursiva
+}
+
+// Função recursiva para movimento da Rainha
+void moverRainha(int casas) {
+    if (casas <= 0) {
+        return; // Caso base - fim da recursão
+    }
+    
+    printf("Rainha: Todas as direções\n"); // Rainha se move em todas as direções
+    moverRainha(casas - 1); // Chamada recursiva
+}
+
+// Função para movimento complexo do Cavalo
+void moverCavalo() {
+    int i, j, k;
+    
+    // Loops complexos aninhados para simular movimento em "L"
+    for (i = 0; i < 2; i++) { // Loop para as 2 casas verticais
+        for (j = 0; j < 1; j++) { // Loop para 1 casa horizontal
+            for (k = 0; k < 3; k++) { // Loop adicional para complexidade
+                if (k == 2) {
+                    continue; // Pula uma iteração para demonstrar controle de fluxo
+                }
+                
+                if (i == 1 && j == 0 && k == 1) {
+                    printf("Cavalo: Movimento em L completo\n");
+                    break; // Sai do loop interno quando movimento completo
+                }
+                
+                // Simula o movimento progressivo
+                if (i == 0) {
+                    printf("Cavalo: Primeira casa para cima\n");
+                } else if (i == 1 && j == 0) {
+                    printf("Cavalo: Segunda casa para cima\n");
+                }
+            }
+        }
+    }
+    
+    // Movimento horizontal final (direita)
+    printf("Cavalo: Uma casa para direita\n");
+}
+
+// Função do Bispo com loops aninhados
+void bispoComLoopsAninhados() {
+    int vertical, horizontal;
+    
+    // Loop externo para movimento vertical
+    for (vertical = 0; vertical < 3; vertical++) {
+        
+        // Loop interno para movimento horizontal  
+        for (horizontal = 0; horizontal < 3; horizontal++) {
+            
+            // Verifica se está na diagonal principal
+            if (vertical == horizontal) {
+                printf("Bispo: Diagonal [%d,%d]\n", vertical, horizontal);
+            }
+            
+            // Condição para demonstrar continue
+            if (horizontal == 1) {
+                continue; // Pula para próxima iteração horizontal
+            }
+        }
+        
+        // Condição para demonstrar break
+        if (vertical == 2) {
+            break; // Sai do loop vertical
+        }
+    }
+}
+
+int main() {
+    int casasTorre = 3;
+    int casasBispo = 3;
+    int casasRainha = 2;
+    
+    printf("=== SIMULADOR DE XADREZ AVANÇADO ===\n\n");
+    
+    // Movimento da Torre com recursividade
+    printf("TORRE (Recursiva):\n");
+    moverTorre(casasTorre);
+    printf("\n");
+    
+    // Movimento do Bispo com recursividade
+    printf("BISPO (Recursiva):\n");
+    moverBispo(casasBispo);
+    printf("\n");
+    
+    // Movimento da Rainha com recursividade
+    printf("RAINHA (Recursiva):\n");
+    moverRainha(casasRainha);
+    printf("\n");
+    
+    // Movimento do Cavalo com loops complexos
+    printf("CAVALO (Loops Complexos):\n");
+    moverCavalo();
+    printf("\n");
+    
+    // Bispo com loops aninhados
+    printf("BISPO (Loops Aninhados):\n");
+    bispoComLoopsAninhados();
+    printf("\n");
+    
+    printf("=== FIM DA SIMULAÇÃO ===\n");
+    
+    return 0;
+}
